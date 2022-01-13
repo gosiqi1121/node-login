@@ -61,9 +61,11 @@ module.exports = (app) => {
             .then(user => {
                 if (user) {
                     // req.session['profile'] = user._doc;
-                    res.json(req.session['profile']);                   //res.json(user);
+                    res.json(user);                   //res.json(user);
                 }
-            })
+            }).catch(err=>{
+            res.json(err);
+        })
     }
     const setorderbyuser = (req,res,next)=>{
         console.log("---------gogogogogogo")
