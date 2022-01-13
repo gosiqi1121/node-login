@@ -32,7 +32,7 @@ module.exports = (app) => {
         dao.findByUsernameAndPassword(req.body)
             .then(user => {
                 if(user) {
-                    req.session['profile'] = user;
+                    req.session['profile'] = user._doc;
                     res.json(user);
                     return;
                 }
@@ -60,7 +60,7 @@ module.exports = (app) => {
         dao.findByUsernameAndPassword(req.session['profile'])
             .then(user => {
                 if (user) {
-                    req.session['profile'] = user;
+                    req.session['profile'] = user._doc;
                     res.json(req.session['profile']);                   //res.json(user);
                 }
             })
