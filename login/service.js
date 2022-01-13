@@ -32,7 +32,7 @@ module.exports = (app) => {
         dao.findByUsernameAndPassword(req.body)
             .then(user => {
                 if(user) {
-                    req.session['profile'] = JSON.stringify(user);
+                    req.session.profile = JSON.parse(JSON.stringify(user));
                     res.json(user);
                     return;
                 }
@@ -57,8 +57,8 @@ module.exports = (app) => {
     }
 
     const profile = (req, res) => {
-        console.log("profile:" ,req.session['profile'])
-        dao.findByUsernameAndPassword(req.session['profile'])
+        console.log("profile:" ,req.session.profile)
+        dao.findByUsernameAndPassword(req.session.profile)
             .then(user => {
                 if (user) {
                     // req.session['profile'] = user._doc;

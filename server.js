@@ -22,6 +22,7 @@ app.use(session({
     secret: 'keyboard cat',
     cookie: {},
     resave: true,
+    rolling: true,
     saveUninitialized: true
 }));
 
