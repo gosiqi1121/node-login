@@ -32,8 +32,8 @@ module.exports = (app) => {
         dao.findByUsernameAndPassword(req.body)
             .then(user => {
                 if(user) {
-                    req.session['profile'] = JSON.parse(JSON.stringify(user));
-                    res.json(req.session['profile']);
+                    req.session['profile'] = JSON.stringify(user);
+                    res.json(user);
                     return;
                 }
                 res.sendStatus(403); //unauthorized
