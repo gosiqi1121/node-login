@@ -57,6 +57,7 @@ module.exports = (app) => {
     }
 
     const profile = (req, res) => {
+        console.log("profile:" ,req.session['profile'])
         dao.findByUsernameAndPassword(req.session['profile'])
             .then(user => {
                 if (user) {
