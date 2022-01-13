@@ -18,7 +18,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 const session = require('express-session')
-app.set('trust proxy', 1)
+app.set('trust proxy', true)
+
 app.use(session({
     secret: 'keyboard cat',
     cookie: { secure: true },
