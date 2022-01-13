@@ -26,7 +26,7 @@ app.use(session({
 }));
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/authentication');
+mongoose.connect('mongodb+srv://siqitech:Siqishmily7@cluster0.w85bq.mongodb.net/authentication?retryWrites=true&w=majority');
 
 require('./login/service')(app);
 require('./products/products-service')(app);
