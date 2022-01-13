@@ -33,7 +33,7 @@ module.exports = (app) => {
             .then(user => {
                 if(user) {
                     req.session['profile'] = user._doc;
-                    res.json(user);
+                    res.json({ ...user, _log: true  });
                     return;
                 }
                 res.sendStatus(403); //unauthorized
