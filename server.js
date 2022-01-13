@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 
 
 const app = express();
@@ -19,17 +20,16 @@ app.use(bodyParser.json());
 
 const session = require('express-session')
 app.set('trust proxy', true)
-
+const connection = 'mongodb+srv://siqitech:Siqishmily7@cluster0.w85bq.mongodb.net/authentication?retryWrites=true&w=majority'
 app.use(session({
     secret: 'keyboard cat',
-    cookie: { secure: true },
+    cookie: { secure: true, sameSite: 'None' },
     resave: false,
     rolling: true,
-    saveUninitialized: true
+    saveUninitialized: true,
 }));
 
-const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://siqitech:Siqishmily7@cluster0.w85bq.mongodb.net/authentication?retryWrites=true&w=majority');
+mongoose.connect(connection);
 
 require('./login/service')(app);
 require('./products/products-service')(app);
